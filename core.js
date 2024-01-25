@@ -1,9 +1,9 @@
 import createDatabaseConnection from './database.js'
 import createWebserver from './webserver.js'
 
-function createCore() {
-    const database = createDatabaseConnection()
-    const webserver = createWebserver();
+function createCore(configurations = {}) {
+    const database = configurations.database || createDatabaseConnection()
+    const webserver = configurations.webserver || createWebserver();
 
     function start() {
         console.log('> [core] Starting...')
